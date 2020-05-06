@@ -9,12 +9,13 @@ class LinkedList:
 	def is_empty(self):
 		return self.head == None
 
+	# instatiate a node when the "item" is not a Node object
 	def instantiate_node_when_needed(self, item):
 		if not isinstance(item, Node):
 			item = Node(item)
 		return item
 
-	#adds a new node containing value to the end of the list
+	# adds a new node containing value to the end of the list
 	def append(self, item):
 		item = self.instantiate_node_when_needed(item)
 		if self.is_empty():
@@ -27,7 +28,15 @@ class LinkedList:
 			self.tail.next = item
 			self.tail = item
 
-	#prepend(value) adds a new node containing value to the start of the list
+	# adds a new node containing value to the start of the list
+	def prepend(self, item):
+		item = self.instantiate_node_when_needed(item)
+		if self.is_empty():
+			self.head = item
+			self.tail = item
+		else:
+			item.next = self.head
+			self.head = item
 
 	#size returns the total number of nodes in the list
 
