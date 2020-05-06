@@ -39,6 +39,15 @@ class LinkedList:
 			self.head = item
 
 	#size returns the total number of nodes in the list
+	def get_size(self):
+		if self.is_empty():
+			return 0
+		current = self.head
+		size = 1
+		while (current.next != None):
+			size += 1
+			current = current.next
+		return size
 
 	#at(index) returns the node at the given index
 
