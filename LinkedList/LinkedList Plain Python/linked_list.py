@@ -1,9 +1,31 @@
+# method documentation by https://www.theodinproject.com/courses/ruby-programming/lessons/linked-lists
+from node import Node
+
 class LinkedList:
 	def __init__(self, head = None):
 		self.head = head
-		self.tail = None
+		self.tail = head
 
-	#append(value) adds a new node containing value to the end of the list
+	def is_empty(self):
+		return self.head == None
+
+	def instantiate_node_when_needed(self, item):
+		if not isinstance(item, Node):
+			item = Node(item)
+		return item
+
+	#adds a new node containing value to the end of the list
+	def append(self, item):
+		item = self.instantiate_node_when_needed(item)
+		if self.is_empty():
+			self.head = item
+			self.tail = item
+		elif self.head == self.tail:
+			self.tail = item
+			self.head.next = item
+		else:
+			self.tail.next = item
+			self.tail = item
 
 	#prepend(value) adds a new node containing value to the start of the list
 
